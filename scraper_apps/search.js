@@ -21,6 +21,7 @@ function sleep(time) {
     });
 };
 
+// this function is just there to navugate to and open the webpage 
 async function open(){
     let driver = await new Builder().forBrowser("chrome").build();
     await driver.get("https://shiny-apps.ceh.ac.uk/pollutionremoval/");
@@ -170,6 +171,9 @@ async function search() {
 
 search();
 // open();
+
+/////////////the following code is just to test out the peice of functionality that writes the info to excel without
+///////////// having to conduct the entire search which takes too long.
 
 // function createExcel(){
 //     let workbook = new excel.Workbook();

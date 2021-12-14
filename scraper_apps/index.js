@@ -1,36 +1,5 @@
-// const { readFileSync } = require("fs");
-// const { NetCDFReader } = require("netcdfjs");
-
-// // http://www.unidata.ucar.edu/software/netcdf/examples/files.html
-// const data = readFileSync('25OGSC_open_greenspace_prescri.nc');
-
-// var reader = new NetCDFReader(data); // read the header
-// reader.getDataVariable("wmoId"); // go to offset and read it
-// console.log(data);
-////////////////////////
-////////////////////////        the above is for reading .nc files  ---- doesnt work though
-////////////////////////
-
 const fs = require("fs");
-const pdf = require("pdf-parse");
 
-// let file = fs.readFileSync('resume.pdf');
-
-// pdf(file).then(function(data) {
-
-//     // console.log(data.numpages);
-//     // console.log(data.numrender);
-//     // console.log(data.info);
-//     // console.log(data.metadata);
-//     // check https://mozilla.github.io/pdf.js/getting_started/
-//     console.log(data.version);
-//     console.log(data.text);
-
-// });
-
-////////////////////////
-////////////////////////        the above reads pdfs using the pdf-parse library
-////////////////////////
 const puppeteer = require("puppeteer");
 const excel = require("exceljs");
 const { get } = require("http");
@@ -41,13 +10,13 @@ const urlDiscountRates =
 const urlDiscountRatesPDF =
   "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/938046/The_Green_Book_2020.pdf";
 
-async function getPDF() {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto(urlDiscountRatesPDF);
-  await page.pdf({ path: "discountRates.pdf", format: "a4" });
-  await browser.close();
-}
+// async function getPDF() {
+//   const browser = await puppeteer.launch();
+//   const page = await browser.newPage();
+//   await page.goto(urlDiscountRatesPDF);
+//   await page.pdf({ path: "discountRates.pdf", format: "a4" });
+//   await browser.close();
+// }
 // getPDF();
 
 // let file = fs.readFileSync(getPDF());
@@ -94,7 +63,8 @@ async function scrapeProduct(
   let worksheet = workbook.addWorksheet(`${nameOfTable}`);
   setWorksheetName(worksheet);
 
-  /////////         create a for loop to find number of columns then create those columns
+  /////////    I need to eventually find a way to find number of columns then create those columns as opposed to manually 
+  ////////      inputting the number of columns 
   // let columns = [];
   // columnHeaderArray.forEach(el => {
   //     columns.append({header: `${el}`});
